@@ -4,6 +4,7 @@ app = Flask(__name__)
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
+        model = joblib.load('/model/cfm_model.pkl')
         # Get input data from the request
         data = request.get_json(force=True)
         features = data['features']
